@@ -2,7 +2,7 @@ from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
 
 # Replace with your Azure Storage Account details
 STORAGE_ACCOUNT_NAME = "birdidentifierstorage"
-STORAGE_ACCOUNT_KEY = "RRDrk61WfR7C5zPdfC2Ul37EzXMHegbKWdUs3fhjQowP3En+I2t51kvhNVqH921eF9DgbLQ/hL1Z+AStHwANOg=="
+STORAGE_ACCOUNT_KEY = ""
 CONTAINER_NAME = "birdinformation"
 
 
