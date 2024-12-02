@@ -1,26 +1,25 @@
 from birdnetlib import Recording
 from birdnetlib.analyzer import Analyzer
 from datetime import datetime
-import json
+import csv
 
 # Load and initialize the BirdNET-Analyzer models.
 analyzer = Analyzer()
 
 recording = Recording(
     analyzer,
-    "./input.mp3",
-    lat=35.4244,
-    lon=-120.7463,
+    "./birdNETSample.mp3",
+    lat=42.058362,
+    lon=-87.676475,
     date=datetime.now(),
     min_conf=0.25,
 )
 recording.analyze()
 
-data = {
-    "lat": recording.lat,
-    "lon": recording.lon,
-    "date": recording.date.strftime("%m/%d/%Y, %H:%M:%S"),
-    "detections": recording.detections,
-}
-with open("output/" + str(recording.date) + ".json", "w") as outfile:
-    json.dump(data, outfile)
+lat = 42.058362
+lon = -87.676475
+with open("output/" + "detections.csv", "a") as outfile:
+    writer = csv.writer(outfile)
+    for bird in recording.detections:
+        data = [lat, lon, bird["common_name"]]
+        writer.writerow(data)
